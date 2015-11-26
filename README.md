@@ -23,14 +23,13 @@ Chen *et al.,* identified a series of non-specific probes across the 450k design
 ```R
 ## generate 'bad' probes filter
 # cross-reactive/non-specific
-cross.react <- read.csv('48639-non-specific-probes-Illumina450k.csv', head = T)
+cross.react <- read.csv('48639-non-specific-probes-Illumina450k.csv', head = T, as.is = T)
 cross.react.probes <- as.character(cross.react$TargetID)
 # BOWTIE2 multi-mapped
-multi.map <- read.csv('HumanMethylation450_15017482_v.1.1_hg19_bowtie_multimap.txt', head = F)
+multi.map <- read.csv('HumanMethylation450_15017482_v.1.1_hg19_bowtie_multimap.txt', head = F, as.is = T)
 multi.map.probes <- as.character(multi.map$V1)
 # determine unique probes
 filter.probes <- unique(c(cross.react.probes, multi.map.probes))
-
 ## filter the matrix of beta values (beta_norm)
 ## CpGs probes (IlmnID) should be rownames
 # fitler out 'bad' probes
