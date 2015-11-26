@@ -37,3 +37,5 @@ table(rownames(beta_norm) %in% filter.probes)
 filter.bad <- rownames(beta_norm) %in% filter.probes
 beta_norm <- beta_norm[!filter.bad,]
 ```
+
+For a real-world example filtering strategy interested parties can refer to the methods section of our publication: (http://www.genomebiology.com/2015/16/1/8)
