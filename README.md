@@ -18,6 +18,17 @@ Chen *et al.,* identified a series of non-specific probes across the 450k design
 
 ***Note:*** there is overlap between the two probe sets.
 
+### remember to include any probes which fail detection
+
+```R
+# process failed probes
+detP <- detectionP(RGset)
+failed <- detP > 0.01
+colMeans(failed) # Fraction of failed positions per sample
+sum(rowMeans(failed)>0.5) # How many positions failed in >50% of samples?
+failed.probes <- rownames(detP[rowMeans(failed)>0.5,])
+```
+
 ## Example filtering strategy (in R)
 
 ```R
@@ -39,3 +50,36 @@ beta_norm <- beta_norm[!filter.bad,]
 ```
 
 For a real-world example filtering strategy interested parties can refer to the methods section of our publication: (http://www.genomebiology.com/2015/16/1/8)
+
+## Update (170928) - addition of probes for EPIC/850k processing
+
+Supplementary data from Pidsley *et al*., (2016), suggests cross-reactive and variant containing probes to filter at QC.
+
+>Pidsley, R., Zotenko, E., Peters, T. J., Lawrence, M. G., Risbridger, G. P., Molloy, P., … Clark, S. J. (2016). *Critical evaluation of the Illumina MethylationEPIC BeadChip microarray for whole-genome DNA methylation profiling*. **Genome Biology**, 17(1), 208. https://doi.org/10.1186/s13059-016-1066-1
+
+## Extension to the above to filter both 450k and EPIC data
+
+```R
+# probes from Pidsley 2016 (EPIC)
+epic.cross1 <- read.csv('EPIC/13059_2016_1066_MOESM1_ESM.csv', head = T)
+# epic.cross2 <- read.csv('EPIC/13059_2016_1066_MOESM2_ESM.csv', head = T)
+# epic.cross3 <- read.csv('EPIC/13059_2016_1066_MOESM3_ESM.csv', head = T)
+epic.variants1 <- read.csv('EPIC/13059_2016_1066_MOESM4_ESM.csv', head = T)
+epic.variants2 <- read.csv('EPIC/13059_2016_1066_MOESM5_ESM.csv', head = T)
+epic.variants3 <- read.csv('EPIC/13059_2016_1066_MOESM6_ESM.csv', head = T)
+# additional filter probes
+epic.add.probes <- c(as.character(epic.cross1$X), as.character(epic.variants1$PROBE), as.character(epic.variants2$PROBE), 
+                     as.character(epic.variants3$PROBE))
+# final list of unique probes
+epic.add.probes <- unique(epic.add.probes)
+```
+
+Filtering process follows the same as above, example:
+
+```R
+# failed probes (those that fail detection)
+beta_norm <- beta_norm[!(rownames(beta_norm) %in% failed.probes),]
+colnames(beta_norm) <- pd$ID
+# additional epic probes
+beta_norm <- beta_norm[!(rownames(beta_norm) %in% epic.add.probes),]
+```
