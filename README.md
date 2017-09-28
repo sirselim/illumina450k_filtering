@@ -1,6 +1,8 @@
-# illumina450k_filtering
-A collection of resources to filter 'bad' probes from the Illumina 450k methylation array (http://www.illumina.com/products/methylation_450_beadchip_kits.html).
+# Illumina methylation array probe filtering (450k and EPIC/850k)
 
+A collection of resources to filter 'bad'/cross-reactive/variant probes from the Illumina methylation arrays during QC stages of pipelines/analysis.
+
+# 450k array
 
 ## BOWTIE2 mapping of 450k probes
 All probe sequences were mapped to the human genome (hg19) using BOWTIE2 to identify potential hybridisation issues. 
@@ -51,7 +53,11 @@ beta_norm <- beta_norm[!filter.bad,]
 
 For a real-world example filtering strategy interested parties can refer to the methods section of our publication: (http://www.genomebiology.com/2015/16/1/8)
 
-## *Update (170928)* - addition of probes for EPIC/850k processing
+-------
+
+### *Update (170928)* - addition of probes for EPIC/850k processing
+
+# EPIC array
 
 Supplementary data from Pidsley *et al*., (2016), suggests cross-reactive and variant containing probes to filter at QC.
 
