@@ -51,13 +51,17 @@ beta_norm <- beta_norm[!filter.bad,]
 
 For a real-world example filtering strategy interested parties can refer to the methods section of our publication: (http://www.genomebiology.com/2015/16/1/8)
 
-## Update (170928) - addition of probes for EPIC/850k processing
+## _Update (170928)_ - addition of probes for EPIC/850k processing
 
 Supplementary data from Pidsley *et al*., (2016), suggests cross-reactive and variant containing probes to filter at QC.
 
 >Pidsley, R., Zotenko, E., Peters, T. J., Lawrence, M. G., Risbridger, G. P., Molloy, P., … Clark, S. J. (2016). *Critical evaluation of the Illumina MethylationEPIC BeadChip microarray for whole-genome DNA methylation profiling*. **Genome Biology**, 17(1), 208. https://doi.org/10.1186/s13059-016-1066-1
 
-## Extension to the above to filter both 450k and EPIC data
+  - there is overlap between 450k and 850k lists, however this will not cause any issues.
+
+### Extension to the above to filter EPIC data (can apply 450k list as well)
+
+Combine the below with the above 450k process to flter EPIC arrays at QC stage:
 
 ```R
 # probes from Pidsley 2016 (EPIC)
