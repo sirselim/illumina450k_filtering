@@ -89,7 +89,6 @@ Filtering process follows the same as above, example:
 ```R
 # failed probes (those that fail detection)
 beta_norm <- beta_norm[!(rownames(beta_norm) %in% failed.probes),]
-colnames(beta_norm) <- pd$ID
 # additional epic probes
 beta_norm <- beta_norm[!(rownames(beta_norm) %in% epic.add.probes),]
 ```
