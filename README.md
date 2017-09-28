@@ -51,7 +51,7 @@ beta_norm <- beta_norm[!filter.bad,]
 
 For a real-world example filtering strategy interested parties can refer to the methods section of our publication: (http://www.genomebiology.com/2015/16/1/8)
 
-## _Update (170928)_ - addition of probes for EPIC/850k processing
+## __Update (170928)__ - addition of probes for EPIC/850k processing
 
 Supplementary data from Pidsley *et al*., (2016), suggests cross-reactive and variant containing probes to filter at QC.
 
