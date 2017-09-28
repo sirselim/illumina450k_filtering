@@ -84,7 +84,7 @@ epic.add.probes <- c(as.character(epic.cross1$X), as.character(epic.variants1$PR
 epic.add.probes <- unique(epic.add.probes)
 ```
 
-Filtering process follows the same as above, example:
+Filtering process follows the same as above (apply to matrix of beta values), example:
 
 ```R
 # failed probes (those that fail detection)
