@@ -55,9 +55,29 @@ For a real-world example filtering strategy interested parties can refer to the 
 
 -------
 
-### *Update (170928)* - addition of probes for EPIC/850k processing
+# EPIC/850K array
 
-# EPIC array
+### *Update (200827)* - added manifest revsion information
+
+If you don't follow the Illumina website closely you may miss that the annotation manifest file goes
+through revision occasionally. It's important to keep an eye on this as some of these changes result 
+in the removal of probes due to poor performance. The below table details the versions and changes. 
+More detailed information can be found at the Illumina product page [here](https://support.illumina.com/array/array_kits/infinium-methylationepic-beadchip-kit/downloads.html).
+
+Revision | Date | Description of Change
+:-------:|:----:|:--------------------
+V1.0 B5 | March 2020 | **Manifest file annotation of discordant probes**
+v1.0 B4 | May 2017 | Manifest file formatting fix
+v1.0 B3 | April 2017 | **Removed 977 CpG sites from manifest**
+v1.0 B2 | February 2016 | Fixed switch in red/green signal for Infinium I SNP probes
+v1.0 B1 | January 2016 | **Removed one pair of bisulfite conversion controls and 1031 CpG sites from the manifest**
+v1.0 | November 2015 | Initial release
+
+Full link to the detailed change log [here](https://support.illumina.com/content/dam/illumina-support/documents/downloads/productfiles/methylationepic/infinium-methylationepic-v1-0-b5-customer-release-notes.pdf).
+
+I recommend always running the latest annotation release, which is currently B5 - [download](http://webdata.illumina.com.s3-website-us-east-1.amazonaws.com/downloads/productfiles/methylationEPIC/infinium-methylationepic-v-1-0-b5-manifest-file-csv.zip).
+
+### *Update (170928)* - addition of probes for EPIC/850k processing
 
 Supplementary data from Pidsley *et al*., (2016), suggests cross-reactive and variant containing probes to filter at QC.
 
